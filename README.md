@@ -100,6 +100,3 @@ dotnet build CarBrand.Mobile/CarBrand.Mobile.csproj -t:Run -f net8.0-maccatalyst
 | `AddCarAdPage` | Создание объявления для выбранной марки |
 | `EditCarAdPage` | Редактирование объявления |
 
-## Автор
-
-**Горбенко** — студенческий проект по дисциплине ISP (информационные системы и программирование).
