@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarBrand.Mobile", "CarBrand.Mobile\CarBrand.Mobile.csproj", "{DF4ADA04-5485-4812-B48C-390DADF7B316}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarBrand.Application", "CarBrand.Application\CarBrand.Application.csproj", "{CCAA8975-113A-4CAB-A6D5-D8954BEFEE43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarBrand.Domain", "CarBrand.Domain\CarBrand.Domain.csproj", "{D4622125-1518-489B-B1AC-B931415CF830}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarBrand.Persistense", "CarBrand.Persistense\CarBrand.Persistense.csproj", "{CA2D7D1B-B450-40CB-931E-BC6321DDDC9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF4ADA04-5485-4812-B48C-390DADF7B316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF4ADA04-5485-4812-B48C-390DADF7B316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF4ADA04-5485-4812-B48C-390DADF7B316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF4ADA04-5485-4812-B48C-390DADF7B316}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCAA8975-113A-4CAB-A6D5-D8954BEFEE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCAA8975-113A-4CAB-A6D5-D8954BEFEE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCAA8975-113A-4CAB-A6D5-D8954BEFEE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCAA8975-113A-4CAB-A6D5-D8954BEFEE43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4622125-1518-489B-B1AC-B931415CF830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4622125-1518-489B-B1AC-B931415CF830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4622125-1518-489B-B1AC-B931415CF830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4622125-1518-489B-B1AC-B931415CF830}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA2D7D1B-B450-40CB-931E-BC6321DDDC9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA2D7D1B-B450-40CB-931E-BC6321DDDC9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA2D7D1B-B450-40CB-931E-BC6321DDDC9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA2D7D1B-B450-40CB-931E-BC6321DDDC9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

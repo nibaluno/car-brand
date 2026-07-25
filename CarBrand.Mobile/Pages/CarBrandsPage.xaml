@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:CarBrand.Mobile.ViewModels"
+    xmlns:entities="clr-namespace:CarBrand.Domain;assembly=CarBrand.Domain"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:converters="clr-namespace:CarBrand.Mobile.ValueConverters"
+    x:DataType="models:CarBrandsViewModel"
+    x:Class="CarBrand.Mobile.Pages.CarBrandsPage"
+    Title="Марки автомобилей">
+<ContentPage.ToolbarItems>
+    <ToolbarItem
+        Text="+ Марка"
+        Command="{Binding AddBrandCommand}"
+        Order="Primary"/>
+    <ToolbarItem
+        Text="+ Объявление"
+        Command="{Binding AddAdCommand}"
+        Order="Primary"/>
+</ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:PriceToColorValueConverter x:Key="PriceToColor"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior
+            EventName="Loaded"
+            Command="{Binding UpdateGroupListCommand}"/>
+    </ContentPage.Behaviors>
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16" RowSpacing="12">
+
+       
+        <VerticalStackLayout Grid.Row="0" Spacing="6">
+            <Label Text="Выберите марку автомобиля:"
+                   FontSize="14" TextColor="Gray"/>
+            <Picker
+                Title="— выберите марку —"
+                ItemsSource="{Binding CarBrands}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedCarBrand}">
+                <Picker.Behaviors>
+                    <toolkit:EventToCommandBehavior
+                        EventName="SelectedIndexChanged"
+                        Command="{Binding UpdateMembersListCommand}"/>
+                </Picker.Behaviors>
+            </Picker>
+        </VerticalStackLayout>
+
+        <Frame
+            Grid.Row="1"
+            Padding="12"
+            CornerRadius="8"
+            BorderColor="LightGray"
+            IsVisible="{Binding IsBrandSelected}">
+            <Grid ColumnDefinitions="*,*"
+                  RowDefinitions="Auto,Auto"
+                  RowSpacing="6">
+                <Label Grid.Row="0" Grid.Column="0"
+                       Text="Марка:" FontAttributes="Bold"/>
+                <Label Grid.Row="0" Grid.Column="1"
+                       Text="{Binding SelectedCarBrand.Name}"/>
+                <Label Grid.Row="1" Grid.Column="0"
+                       Text="Страна:" FontAttributes="Bold"/>
+                <Label Grid.Row="1" Grid.Column="1"
+                       Text="{Binding SelectedCarBrand.Country}"/>
+            </Grid>
+        </Frame>
+
+
+        <CollectionView
+            Grid.Row="2"
+            ItemsSource="{Binding CarAds}"
+            EmptyView="Нет объявлений для этой марки">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="entities:CarAd">
+
+                    <Border
+                        Margin="0,4"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 8,8,8,8"
+                        Stroke="{Binding Price,
+                                 Converter={StaticResource PriceToColor}}"
+                        BackgroundColor="{Binding Price,
+                                          Converter={StaticResource PriceToColor}}">
+
+                    
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding
+                                    Source={RelativeSource AncestorType={x:Type models:CarBrandsViewModel}},
+                                    Path=ShowDetailsCommand}"
+                                CommandParameter="{Binding}"/>
+                        </Border.GestureRecognizers>
+
+                        <Grid
+                            Padding="12,8"
+                            ColumnDefinitions="*,Auto"
+                            RowDefinitions="Auto,Auto,Auto">
+
+                      
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Text="{Binding Title}"
+                                FontAttributes="Bold"
+                                FontSize="15"/>
+
+                      
+                            <Label
+                                Grid.Row="0" Grid.Column="1"
+                                FontAttributes="Bold"
+                                FontSize="15"
+                                TextColor="DarkGreen">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Price,
+                                              StringFormat='{0:N0}'}"/>
+                                        <Span Text=" $"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                         
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                TextColor="Gray"
+                                FontSize="12">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Год: "/>
+                                        <Span Text="{Binding Year}"/>
+                                        <Span Text="   Пробег: "/>
+                                        <Span Text="{Binding Mileage,
+                                              StringFormat='{0:N0} км'}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                TextColor="Gray"
+                                FontSize="12">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Цвет: "/>
+                                        <Span Text="{Binding Color}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                        </Grid>
+                    </Border>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

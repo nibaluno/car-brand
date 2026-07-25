@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:CarBrand.Mobile.ViewModels"
+    x:DataType="models:EditCarAdViewModel"
+    x:Class="CarBrand.Mobile.Pages.EditCarAdPage"
+    Title="Редактирование">
+
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="12">
+
+            <Label Text="Название:" FontAttributes="Bold"/>
+            <Entry
+                Text="{Binding AdTitle}"
+                Placeholder="Например: Toyota Camry 2021"/>
+
+            <Label Text="Цена ($):" FontAttributes="Bold"/>
+            <Entry
+                Text="{Binding Price}"
+                Keyboard="Numeric"
+                Placeholder="Например: 25000"/>
+
+            <Label Text="Год выпуска:" FontAttributes="Bold"/>
+            <Entry
+                Text="{Binding Year}"
+                Keyboard="Numeric"
+                Placeholder="Например: 2021"/>
+
+            <Label Text="Пробег (км):" FontAttributes="Bold"/>
+            <Entry
+                Text="{Binding Mileage}"
+                Keyboard="Numeric"
+                Placeholder="Например: 50000"/>
+
+            <Label Text="Цвет:" FontAttributes="Bold"/>
+            <Entry
+                Text="{Binding Color}"
+                Placeholder="Например: Белый"/>
+
+            <Button
+                Text="Сохранить"
+                Command="{Binding SaveCommand}"
+                Margin="0,16,0,0"
+                BackgroundColor="#4CAF50"
+                TextColor="White"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

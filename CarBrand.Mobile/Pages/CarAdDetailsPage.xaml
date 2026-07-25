@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:CarBrand.Mobile.ViewModels"
+    xmlns:converters="clr-namespace:CarBrand.Mobile.ValueConverters"
+    x:DataType="models:CarAdDetailsViewModel"
+    x:Class="CarBrand.Mobile.Pages.CarAdDetailsPage"
+    Title="Объявление">
+
+    <ContentPage.Resources>
+        <converters:IdToImageValueConverter x:Key="IdToImage"/>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Изменить"
+                     Command="{Binding EditAdCommand}"/>
+        <ToolbarItem Text="Сменить марку"
+                     Command="{Binding MoveToBrandCommand}"/>
+        <ToolbarItem Text="Удалить"
+                     Command="{Binding DeleteAdCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="16">
+
+            <Frame Padding="0" CornerRadius="12"
+                   IsClippedToBounds="True"
+                   HeightRequest="220">
+                <Image
+                    Source="{Binding CarImage}" 
+                    Aspect="AspectFill"/>
+            </Frame>
+            <Button
+                Text="Выбрать фото"
+                Command="{Binding PickImageCommand}"
+                BackgroundColor="#607D8B"
+                TextColor="White"/>
+
+            <Label
+                Text="{Binding CarAd.Title}"
+                FontSize="22"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"/>
+
+            <Frame Padding="16" CornerRadius="12" BorderColor="LightGray">
+                <Grid
+                    RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                    ColumnDefinitions="*,*"
+                    RowSpacing="12">
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                           Text="Цена:" FontAttributes="Bold" FontSize="16"/>
+                    <Label Grid.Row="0" Grid.Column="1"
+                           FontAttributes="Bold" FontSize="16"
+                           TextColor="DarkGreen">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding CarAd.Price,
+                                      StringFormat='{0:N0}'}"/>
+                                <Span Text=" $"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Grid.Row="1" Grid.Column="0"
+                           Text="Год:" FontAttributes="Bold"/>
+                    <Label Grid.Row="1" Grid.Column="1"
+                           Text="{Binding CarAd.Year}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0"
+                           Text="Пробег:" FontAttributes="Bold"/>
+                    <Label Grid.Row="2" Grid.Column="1"
+                           Text="{Binding CarAd.Mileage,
+                                  StringFormat='{0:N0} км'}"/>
+
+                    <Label Grid.Row="3" Grid.Column="0"
+                           Text="Цвет:" FontAttributes="Bold"/>
+                    <Label Grid.Row="3" Grid.Column="1"
+                           Text="{Binding CarAd.Color}"/>
+
+                    <Label Grid.Row="4" Grid.Column="0"
+                           Text="ID:" TextColor="Gray"/>
+                    <Label Grid.Row="4" Grid.Column="1"
+                           Text="{Binding CarAd.Id}" TextColor="Gray"/>
+                </Grid>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
